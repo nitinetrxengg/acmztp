@@ -1,25 +1,19 @@
 apiVersion: ran.openshift.io/v1
 kind: PolicyGenTemplate
 metadata:
-  name: "site1"
+  name: "site1odf"
   namespace: "ztp-site"
 spec:
   bindingRules:
     # These policies will correspond to all clusters with this label:
-    sites: "sno411ai"
+    sites: "site1"
   mcp: "master"
   sourceFiles:
-    - fileName: odflvmns.yaml
+    - fileName: day2yamls/odflvmns.yaml
       policyName: "subs-policy"
-      apiVersion: v1
-      kind: Namespace
-      metadata:
-        labels:
-            openshift.io/cluster-monitoring: "true"
-            pod-security.kubernetes.io/enforce: privileged
-            pod-security.kubernetes.io/audit: privileged
-            pod-security.kubernetes.io/warn: privileged
-      name: openshift-storage
-    - fileName: odflvmopergroup.yaml
+    - fileName: day2yamls/odflvmopergroup.yaml
       policyName: "subs-policy"
-      
+    - fileName: day2yamls/odflvmsubs.yaml
+      policyName: "subs-policy"
+    - fileName: day2yamls/odflvmcluster.yaml
+      policyName: "subs-policy"
