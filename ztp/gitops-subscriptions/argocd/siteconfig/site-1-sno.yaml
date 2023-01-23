@@ -3,16 +3,16 @@
 apiVersion: ran.openshift.io/v1
 kind: SiteConfig
 metadata:
-  name: "sno411ai"
-  namespace: "sno411ai"
+  name: "snosite1"
+  namespace: "snosite1"
 spec:
   baseDomain: "intel.demolab.com"
   pullSecretRef:
-    name: "pullsecret-cluster-sno411ai"
-  clusterImageSetNameRef: "img4.10.47-x86-64-appsub"
+    name: "pullsecret-cluster-snosite1"
+  clusterImageSetNameRef: "img4.11.9-x86-64-appsub"
   sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa0RLHxDNVLQnN8rxcliwOrjXQ51A1DOp1Wy2l4ZeDc kni@ocpbastionbm.intel.demolab.com"
   clusters:
-  - clusterName: "sno411ai"
+  - clusterName: "snosite1"
     networkType: "OVNKubernetes"
     clusterLabels:
       # These example cluster labels correspond to the bindingRules in the PolicyGenTemplate examples in ../policygentemplates:
@@ -22,7 +22,7 @@ spec:
       group-du-sno: ""
       # ../policygentemplates/example-sno-site.yaml will apply to all clusters with 'sites: "example-sno"'
       # Normally this should match or contain the cluster name so it only applies to a single cluster
-      sites : "sno411ai"
+      sites : "site1"
     clusterNetwork:
       - cidr: 10.128.0.0/14
         hostPrefix: 23
