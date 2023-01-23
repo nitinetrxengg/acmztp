@@ -1,0 +1,19 @@
+apiVersion: ran.openshift.io/v1
+kind: PolicyGenTemplate
+metadata:
+  name: "common"
+  namespace: "ztp-common"
+spec:
+  bindingRules:
+    common: "true"
+  mcp: "master"
+  sourceFiles:
+    - fileName: ClusterLogNS.yaml
+      policyName: "subscriptions-policy"
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: openshift-logging
+      annotations:
+         workload.openshift.io/allowed: management
+         ran.openshift.io/ztp-deploy-wave: "2"
