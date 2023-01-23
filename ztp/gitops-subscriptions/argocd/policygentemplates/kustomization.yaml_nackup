@@ -1,4 +1,6 @@
 generators:
 # This is common to all RAN deployments
+- common-ranGen.yaml
 
 resources:
+- ns.yaml
