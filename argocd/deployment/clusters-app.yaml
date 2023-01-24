@@ -14,9 +14,9 @@ spec:
     namespace: clusters-sub
   project: ztp-app-project
   source:
-    path: ztp/gitops-subscriptions/argocd/siteconfig
+    path: ztp/gitops-subscriptions/argocd/siteconfig/
     repoURL: https://github.com/nitinetrxengg/acmztp
-    targetRevision: master
+    targetRevision: main
     # uncomment the below plugin if you will be adding the plugin binaries in the same repo->dir where
     # the sitconfig.yaml exist AND use the ../../hack/patch-argocd-dev.sh script to re-patch the deployment-repo-server
 #    plugin:

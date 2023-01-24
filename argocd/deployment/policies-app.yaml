@@ -16,7 +16,7 @@ spec:
   source:
     path: ztp/gitops-subscriptions/argocd/policygentemplates
     repoURL: https://github.com/nitinetrxengg/acmztp
-    targetRevision: master
+    targetRevision: main
     # uncomment the below plugin if you will be adding the plugin binaries in the same repo->dir where
     # the policyGenTemplate.yaml exist AND use the ../../hack/patch-argocd-dev.sh script to re-patch the deployment-repo-server
 #    plugin:
