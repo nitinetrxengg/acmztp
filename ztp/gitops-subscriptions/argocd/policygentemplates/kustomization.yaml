@@ -1,13 +1,15 @@
 generators:
 # This is common to all RAN deployments
 
+- common-ranGen.yaml
 
 # This is for Site1  deployments
 
+- site1_10.yaml
+- site1_20.yaml
 
-
-# This is for Site2  deployments
 
 
 resources:
 
+- ns.yaml
