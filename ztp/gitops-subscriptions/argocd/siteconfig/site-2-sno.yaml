@@ -1,0 +1,89 @@
+# example-node1-bmh-secret & assisted-deployment-pull-secret need to be created under same namespace example-sno
+---
+apiVersion: ran.openshift.io/v1
+kind: SiteConfig
+metadata:
+  name: "snosite2"
+  namespace: "snosite2"
+spec:
+  baseDomain: "intel.demolab.com"
+  pullSecretRef:
+    name: "pullsecret-cluster-snosite2"
+  clusterImageSetNameRef: "img4.11.25-x86-64-appsub"
+  sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa0RLHxDNVLQnN8rxcliwOrjXQ51A1DOp1Wy2l4ZeDc kni@ocpbastionbm.intel.demolab.com"
+  clusters:
+  - clusterName: "snosite2"
+    networkType: "OVNKubernetes"
+    clusterLabels:
+      # These example cluster labels correspond to the bindingRules in the PolicyGenTemplate examples in ../policygentemplates:
+      # ../policygentemplates/common-ranGen.yaml will apply to all clusters with 'common: true'
+      common: true
+      # ../policygentemplates/group-du-sno-ranGen.yaml will apply to all clusters with 'group-du-sno: ""'
+      group-du-sno: ""
+      # ../policygentemplates/example-sno-site.yaml will apply to all clusters with 'sites: "example-sno"'
+      # Normally this should match or contain the cluster name so it only applies to a single cluster
+      sites : "site2"
+    clusterNetwork:
+      - cidr: 10.128.0.0/14
+        hostPrefix: 23
+    machineNetwork:
+      - cidr: 192.168.40.0/24
+    serviceNetwork:
+      - 172.30.0.0/16
+    additionalNTPSources:
+      - 192.168.40.117
+    # Optionally; This can be used to override the KlusterletAddonConfig that is created for this cluster:
+    #crTemplates:
+    #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
+    nodes:
+      - hostName: "snosite2.intel.demolab.com"
+        role: "master"
+        # Optionally; This can be used to configure desired BIOS setting on a host:
+        #biosConfigRef:
+        #  filePath: "example-hw.profile"
+        bmcAddress: "192.168.60.63"
+        bmcCredentialsName:
+          name: "bmc-secret-snosite2"
+        bootMACAddress: "a4:bf:01:6a:60:06"
+        # Use UEFISecureBoot to enable secure boot
+        bootMode: "UEFI"
+        rootDeviceHints:
+           deviceName: "/dev/sda"
+#          wwn: "0x11111000000asd123"
+        # example of diskPartition below is used for image registry (check ImageRegistry.md for more details), but it's not limited to this use case
+#        diskPartition:
+#          - device: /dev/disk/by-id/wwn-0x11111000000asd123 # match rootDeviceHints
+#            partitions:
+#              - mount_point: /var/imageregistry
+#                size: 102500
+#                start: 344844
+#       cpuset: "0-1,52-53"
+        nodeNetwork:
+          interfaces:
+            - name: eno1
+              macAddress: "a4:bf:01:6a:60:05"
+            - name: eno2
+              macAddress: "a4:bf:01:6a:60:06"
+          config:
+            interfaces:
+              - name: eno1
+                type: ethernet
+                state: up
+                macAddress: "a4:bf:01:6a:60:05"
+                ipv4:
+                  address:
+                  - ip: 192.168.40.153
+                    prefix-length: 24
+                  enabled: true
+            dns-resolver:
+              config:
+                search:
+                - intel.demolab.com
+                server:
+                - 192.168.40.117
+            routes:
+              config:
+              - destination: 0.0.0.0/0
+                next-hop-interface: eno1
+                next-hop-address: 192.168.40.2
+                table-id: 254
