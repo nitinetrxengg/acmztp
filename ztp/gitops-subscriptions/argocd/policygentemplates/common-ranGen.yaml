@@ -14,5 +14,3 @@ spec:
       policyName: "subscriptions-policy"
     - fileName: day2yamls/odflvmopergroup.yaml
       policyName: "subscriptions-policy"
-    - fileName: day2yamls/odflvmsubs.yaml
-      policyName: "subscriptions-policy"

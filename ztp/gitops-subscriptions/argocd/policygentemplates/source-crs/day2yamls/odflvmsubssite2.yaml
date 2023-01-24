@@ -5,7 +5,7 @@ metadata:
   name: odf-lvm-operator
   namespace: openshift-storage
   annotations:
-    ran.openshift.io/ztp-deploy-wave: "2"
+    ran.openshift.io/ztp-deploy-wave: "10"
 spec:
   installPlanApproval: Automatic
   name: odf-lvm-operator

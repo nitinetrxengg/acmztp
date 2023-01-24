@@ -1,0 +1,15 @@
+apiVersion: ran.openshift.io/v1
+kind: PolicyGenTemplate
+metadata:
+  name: "site2odfocpvsubs"
+  namespace: "ztp-site"
+spec:
+  bindingRules:
+    # These policies will correspond to all clusters with this label:
+    sites: "site2"
+  mcp: "master"
+  sourceFiles:
+    - fileName: day2yamls/odflvmsubssite2.yaml
+      policyName: "subscriptions-policy"
+    - fileName: day2yamls/ocpvsubs411.yaml
+      policyName: "subscriptions-policy"

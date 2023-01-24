@@ -1,7 +1,7 @@
 apiVersion: ran.openshift.io/v1
 kind: PolicyGenTemplate
 metadata:
-  name: "site1odf"
+  name: "site1odfocpvconf"
   namespace: "ztp-site"
 spec:
   bindingRules:
@@ -9,5 +9,7 @@ spec:
     sites: "site1"
   mcp: "master"
   sourceFiles:
-    - fileName: day2yamls/odflvmcluster.yaml
+    - fileName: day2yamls/odflvmclustersite1.yaml
+      policyName: "config-policy"
+    - fileName: day2yamls/ocpvhco410.yaml
       policyName: "config-policy"

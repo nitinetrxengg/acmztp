@@ -2,12 +2,16 @@ apiVersion: v1
 kind: Namespace
 metadata:
   name: openshift-cnv
+  annotations:
+    ran.openshift.io/ztp-deploy-wave: "10"
 ---
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   name: kubevirt-hyperconverged-group
   namespace: openshift-cnv
+  annotations:
+    ran.openshift.io/ztp-deploy-wave: "10"
 spec:
   targetNamespaces:
     - openshift-cnv
@@ -17,6 +21,8 @@ kind: Subscription
 metadata:
   name: hco-operatorhub
   namespace: openshift-cnv
+  annotations:
+    ran.openshift.io/ztp-deploy-wave: "10"
 spec:
   source: redhat-operators
   sourceNamespace: openshift-marketplace
