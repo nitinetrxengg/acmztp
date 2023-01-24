@@ -9,7 +9,7 @@ spec:
   baseDomain: "intel.demolab.com"
   pullSecretRef:
     name: "pullsecret-cluster-snosite1"
-  clusterImageSetNameRef: "img4.11.9-x86-64-appsub"
+  clusterImageSetNameRef: "img4.11.22-x86-64-appsub"
   sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa0RLHxDNVLQnN8rxcliwOrjXQ51A1DOp1Wy2l4ZeDc kni@ocpbastionbm.intel.demolab.com"
   clusters:
   - clusterName: "snosite1"
