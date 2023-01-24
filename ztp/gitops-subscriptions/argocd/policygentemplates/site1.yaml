@@ -9,11 +9,5 @@ spec:
     sites: "site1"
   mcp: "master"
   sourceFiles:
-    - fileName: day2yamls/odflvmns.yaml
-      policyName: "subs-policy"
-    - fileName: day2yamls/odflvmopergroup.yaml
-      policyName: "subs-policy"
-    - fileName: day2yamls/odflvmsubs.yaml
-      policyName: "subs-policy"
     - fileName: day2yamls/odflvmcluster.yaml
-      policyName: "subs-policy"
+      policyName: "config-policy"

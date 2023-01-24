@@ -36,7 +36,7 @@ spec:
     #crTemplates:
     #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
     nodes:
-      - hostName: "sno411ai.intel.demolab.com"
+      - hostName: "snosite1.intel.demolab.com"
         role: "master"
         # Optionally; This can be used to configure desired BIOS setting on a host:
         #biosConfigRef:

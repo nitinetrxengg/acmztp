@@ -8,12 +8,11 @@ spec:
     common: "true"
   mcp: "master"
   sourceFiles:
-    - fileName: ClusterLogNS.yaml
+    - fileName: day2yamls/ClusterLogNS.yaml
       policyName: "subscriptions-policy"
-      apiVersion: v1
-      kind: Namespace
-      metadata:
-        name: openshift-logging
-      annotations:
-         workload.openshift.io/allowed: management
-         ran.openshift.io/ztp-deploy-wave: "2"
+    - fileName: day2yamls/odflvmns.yaml
+      policyName: "subscriptions-policy"
+    - fileName: day2yamls/odflvmopergroup.yaml
+      policyName: "subscriptions-policy"
+    - fileName: day2yamls/odflvmsubs.yaml
+      policyName: "subscriptions-policy"
