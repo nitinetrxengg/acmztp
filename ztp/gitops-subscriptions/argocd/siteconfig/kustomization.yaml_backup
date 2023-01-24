@@ -5,4 +5,4 @@ generators:
 - site-1-sno.yaml
 
 resources:
-- sno411ai_secret.yaml
+- snosite1_secret.yaml
