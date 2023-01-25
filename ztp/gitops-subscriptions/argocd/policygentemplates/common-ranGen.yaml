@@ -10,6 +10,12 @@ spec:
   sourceFiles:
     - fileName: day2yamls/ClusterLogNS.yaml
       policyName: "subscriptions-policy"
+    - fileName: day2yamls/localstoragens.yaml
+      policyName: "subscriptions-policy"
+    - fileName: day2yamls/localstorageopergroup.yaml
+      policyName: "subscriptions-policy"
+    - fileName: day2yamls/localstoragesubs.yaml
+      policyName: "subscriptions-policy"
     - fileName: day2yamls/odflvmns.yaml
       policyName: "subscriptions-policy"
     - fileName: day2yamls/odflvmopergroup.yaml

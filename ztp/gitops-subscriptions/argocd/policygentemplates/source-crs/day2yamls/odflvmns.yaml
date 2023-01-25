@@ -4,9 +4,7 @@ kind: Namespace
 metadata:
  labels:
     openshift.io/cluster-monitoring: "true"
-    pod-security.kubernetes.io/enforce: privileged
-    pod-security.kubernetes.io/audit: privileged
-    pod-security.kubernetes.io/warn: privileged
+    kubernetes.io/metadata.name: openshift-storage
  annotations:
     ran.openshift.io/ztp-deploy-wave: "2"
  name: openshift-storage

@@ -9,9 +9,11 @@ spec:
     sites: "site1"
   mcp: "master"
   sourceFiles:
-    - fileName: day2yamls/odflvmclustersite2.yaml
+    - fileName: day2yamls/odflvmclustersite1.yaml
       policyName: "config-policy"
-    - fileName: day2yamls/ocpvhco411.yaml
+    - fileName: day2yamls/ocpvhco410.yaml
       policyName: "config-policy"
     - fileName: day2yamls/opcvspsite1.yaml
+      policyName: "config-policy"
+    - fileName: day2yamls/lvmstorageclass.yaml
       policyName: "config-policy"

@@ -9,7 +9,7 @@ spec:
     sites: "site1"
   mcp: "master"
   sourceFiles:
-    - fileName: day2yamls/odflvmsubssite2.yaml
+    - fileName: day2yamls/odflvmsubssite1.yaml
       policyName: "subscriptions-policy"
-    - fileName: day2yamls/ocpvsubs411.yaml
+    - fileName: day2yamls/ocpvsubs410.yaml
       policyName: "subscriptions-policy"

@@ -1,15 +1,15 @@
----
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: odf-lvm-operator
-  namespace: openshift-storage
+  name: local-storage-operator
+  namespace: openshift-local-storage
   annotations:
-    ran.openshift.io/ztp-deploy-wave: "10"
+    ran.openshift.io/ztp-deploy-wave: "2"
 spec:
-  channel: stable-4.10
+  channel: stable
   installPlanApproval: Automatic
-  name: odf-lvm-operator
+  name: local-storage-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: odf-lvm-operator.v4.10.9
+status:
+  state: AtLatestKnown	
