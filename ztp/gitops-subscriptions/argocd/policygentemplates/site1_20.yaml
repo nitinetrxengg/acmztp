@@ -13,7 +13,7 @@ spec:
       policyName: "config-policy"
     - fileName: day2yamls/ocpvhco410.yaml
       policyName: "config-policy"
-    - fileName: day2yamls/opcvspsite1.yaml
+    - fileName: day2yamls/ocpvspsite1.yaml
       policyName: "config-policy"
     - fileName: day2yamls/lvmstorageclass.yaml
       policyName: "config-policy"
