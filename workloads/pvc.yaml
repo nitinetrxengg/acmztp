@@ -2,6 +2,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ztppvc
+  labels:
+   app: ztpapplication
 spec:
   accessModes:
     - ReadWriteOnce

@@ -25,6 +25,7 @@ metadata:
     vm.kubevirt.io/template.revision: "1"
     vm.kubevirt.io/template.version: v0.19.6
     workload.template.kubevirt.io/server: "true"
+    app: ztpapplication
   name: rhel9-ztp-vm
   namespace: default
 spec:
