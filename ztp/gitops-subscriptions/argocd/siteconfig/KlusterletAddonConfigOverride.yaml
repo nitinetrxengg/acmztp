@@ -1,0 +1,28 @@
+apiVersion: agent.open-cluster-management.io/v1
+kind: KlusterletAddonConfig
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+  name: "snosite1"
+  namespace: "snosite1"
+spec:
+  clusterName: "snosite1"
+  clusterNamespace: "snosite1"
+  clusterLabels:
+    cloud: auto-detect
+    vendor: auto-detect
+  applicationManager:
+    enabled: true
+  certPolicyController:
+    enabled: true
+  iamPolicyController:
+    enabled: true
+  policyController:
+    enabled: true
+  searchCollector:
+    enabled: true
+
+# Note: This override replaces the entire KlusterletAddonConfig, and so must be
+# provided in full. The templated portions will be substituted to match the
+# cluster as defined in the SiteConfig, so it should be sufficient to adjust
+# the 'enabled' flags to match the desired configuration.
