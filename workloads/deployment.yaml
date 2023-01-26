@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ztppod
+  labels:
+    app: ztppod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ztppod
+  template:
+    metadata:
+      labels:
+        app: ztppod
+    spec:
+      containers:
+        - name: ztpcontainer
+          image: ubuntu:18.04
+          command: ["sleep"]
+          args: ["3000000"]
+          volumeMounts:
+            - name: ztpvol
+              mountPath: /data/
+      volumes:
+        - name: ztpvol
+          persistentVolumeClaim:
+            claimName: ztppvc
