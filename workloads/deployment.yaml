@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: ztppod
   labels:
-    app: ztpapplication
+    apppod: ztppod
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ztpapplication
+      apppod: ztppod
   template:
     metadata:
       labels:
-        app: ztpapplication
+        apppod: ztppod
     spec:
       containers:
         - name: ztpcontainer
