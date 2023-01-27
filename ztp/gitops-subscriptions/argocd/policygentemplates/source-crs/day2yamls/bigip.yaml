@@ -1,0 +1,112 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+    kubemacpool.io/transaction-timestamp: "2023-01-27T17:45:17.643545159Z"
+    kubevirt.io/latest-observed-api-version: v1
+    kubevirt.io/storage-observed-api-version: v1alpha3
+    name.os.template.kubevirt.io/rhel7.9: Red Hat Enterprise Linux 7.0 or higher
+    vm.kubevirt.io/validations: |
+      [
+        {
+          "name": "minimal-required-memory",
+          "path": "jsonpath::.spec.domain.resources.requests.memory",
+          "rule": "integer",
+          "message": "This VM requires more memory.",
+          "min": 1073741824
+        }
+      ]
+  labels:
+    app: bigip
+    os.template.kubevirt.io/rhel7.9: "true"
+    vm.kubevirt.io/template: rhel7-server-large
+    vm.kubevirt.io/template.namespace: openshift
+    vm.kubevirt.io/template.revision: "1"
+    vm.kubevirt.io/template.version: v0.19.6
+    workload.template.kubevirt.io/server: "true"
+  name: bigip
+  namespace: virtualization
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      name: bigip-rootdisk-0gl3p
+      namespace: virtualization
+    spec:
+      source:
+        http:
+          url: http://192.168.40.117:8080/rhelimages/bigip.qcow2
+      storage:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 100Gi
+        storageClassName: odf-lvm-vg1
+        volumeMode: Block
+  running: true
+  template:
+    metadata:
+      annotations:
+        vm.kubevirt.io/flavor: large
+        vm.kubevirt.io/os: rhel7
+        vm.kubevirt.io/workload: server
+      creationTimestamp: null
+      labels:
+        kubevirt.io/domain: bigip
+        kubevirt.io/size: large
+        os.template.kubevirt.io/rhel7.9: "true"
+        vm.kubevirt.io/name: bigip
+        workload.template.kubevirt.io/server: "true"
+    spec:
+      domain:
+        cpu:
+          cores: 16
+          sockets: 1
+          threads: 1
+        devices:
+          autoattachPodInterface: false
+          disks:
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+          - bootOrder: 1
+            disk:
+              bus: virtio
+            name: rootdisk
+          interfaces:
+          - bridge: {}
+            model: virtio
+            name: nic-0
+          - bridge: {}
+            model: virtio
+            name: nic-1
+          networkInterfaceMultiqueue: true
+          rng: {}
+        machine:
+          type: pc-i440fx-rhel7.6.0
+        resources:
+          requests:
+            memory: 24Gi
+      evictionStrategy: LiveMigrate
+      hostname: bigip
+      networks:
+      - multus:
+          networkName: vm510bridge
+        name: nic-0
+      - multus:
+          networkName: vm610bridge
+        name: nic-1
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - cloudInitNoCloud:
+          userData: |
+            #cloud-config
+            user: root
+            password: redhat
+            chpasswd:
+              expire: false
+            hostname: bigip
+        name: cloudinitdisk
+      - dataVolume:
+          name: bigip-rootdisk-0gl3p
+        name: rootdisk
