@@ -34,10 +34,9 @@ spec:
     metadata:
       name: rhel9-ztp-vm
     spec:
-      sourceRef:
-        kind: DataSource
-        name: rhel9
-        namespace: openshift-virtualization-os-images
+      source:
+        registry:
+          url: 'docker://registry.redhat.io/rhel9/rhel-guest-image'
       storage:
         accessModes:
         - ReadWriteOnce
