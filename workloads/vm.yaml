@@ -32,12 +32,11 @@ spec:
   - apiVersion: cdi.kubevirt.io/v1beta1
     kind: DataVolume
     metadata:
-      name: rhel9-ztp-vm
+      name: rhel9-ztp-vmurl
     spec:
-      sourceRef:
-        kind: DataSource
-        name: rhel9
-        namespace: openshift-virtualization-os-images
+      source:
+        registry:
+          url: 'docker://registry.redhat.io/rhel9/rhel-guest-image'
       storage:
         accessModes:
         - ReadWriteOnce
