@@ -3,16 +3,16 @@
 apiVersion: ran.openshift.io/v1
 kind: SiteConfig
 metadata:
-  name: "snosite2"
-  namespace: "snosite2"
+  name: "ztpdemosno2"
+  namespace: "ztpdemosno2"
 spec:
   baseDomain: "intel.demolab.com"
   pullSecretRef:
     name: "pullsecret-cluster-snosite2"
-  clusterImageSetNameRef: "img4.11.25-x86-64-appsub"
+  clusterImageSetNameRef: "img4.10.47-x86-64-appsub"
   sshPublicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMa0RLHxDNVLQnN8rxcliwOrjXQ51A1DOp1Wy2l4ZeDc kni@ocpbastionbm.intel.demolab.com"
   clusters:
-  - clusterName: "snosite2"
+  - clusterName: "ztpdemosno2"
     networkType: "OVNKubernetes"
     clusterLabels:
       # These example cluster labels correspond to the bindingRules in the PolicyGenTemplate examples in ../policygentemplates:
@@ -22,7 +22,7 @@ spec:
       group-du-sno: ""
       # ../policygentemplates/example-sno-site.yaml will apply to all clusters with 'sites: "example-sno"'
       # Normally this should match or contain the cluster name so it only applies to a single cluster
-      sites : "site2"
+      sites : "site1"
     clusterNetwork:
       - cidr: 10.128.0.0/14
         hostPrefix: 23
@@ -36,15 +36,15 @@ spec:
     #crTemplates:
     #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
     nodes:
-      - hostName: "snosite2.intel.demolab.com"
+      - hostName: "ztpdemosno2.intel.demolab.com"
         role: "master"
         # Optionally; This can be used to configure desired BIOS setting on a host:
         #biosConfigRef:
         #  filePath: "example-hw.profile"
-        bmcAddress: "192.168.60.63"
+        bmcAddress: "192.168.50.115"
         bmcCredentialsName:
           name: "bmc-secret-snosite2"
-        bootMACAddress: "a4:bf:01:6a:60:06"
+        bootMACAddress: "a4:bf:01:38:e8:34"
         # Use UEFISecureBoot to enable secure boot
         bootMode: "UEFI"
         rootDeviceHints:
@@ -61,18 +61,18 @@ spec:
         nodeNetwork:
           interfaces:
             - name: eno1
-              macAddress: "a4:bf:01:6a:60:05"
+              macAddress: "a4:bf:01:38:e8:33"
             - name: eno2
-              macAddress: "a4:bf:01:6a:60:06"
+              macAddress: "a4:bf:01:38:e8:34"
           config:
             interfaces:
               - name: eno1
                 type: ethernet
                 state: up
-                macAddress: "a4:bf:01:6a:60:05"
+                macAddress: "a4:bf:01:38:e8:33"
                 ipv4:
                   address:
-                  - ip: 192.168.40.153
+                  - ip: 192.168.40.115
                     prefix-length: 24
                   enabled: true
             dns-resolver:
