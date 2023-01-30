@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ztphttpd
+  labels:
+    app: ztphttpd
+spec:
+  host: ztphttpd-virtualization.apps.ocphub.intel.demolab.com
+  to:
+    kind: Service
+    name: ztphttpd
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
