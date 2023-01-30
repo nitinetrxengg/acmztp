@@ -1,28 +1,31 @@
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
-  name: ztppod
+  name: ztphttpd
   labels:
-    apppod: ztppod
+    app: ztphttpd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      apppod: ztppod
+      app: ztphttpd
   template:
     metadata:
       labels:
-        apppod: ztppod
+        app: ztphttpd
     spec:
       containers:
-        - name: ztpcontainer
-          image: ubuntu:18.04
-          command: ["sleep"]
-          args: ["3000000"]
-          volumeMounts:
-            - name: ztpvol
-              mountPath: /data/
-      volumes:
-        - name: ztpvol
-          persistentVolumeClaim:
-            claimName: ztppvc
+        - name: ztphttpd
+          image: quay.io/nitin_etrxengg/ztp/ztphttpd:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - containerPort: 8443
+              protocol: TCP
+          imagePullPolicy: Always
+      restartPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
