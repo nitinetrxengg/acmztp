@@ -33,8 +33,8 @@ spec:
     additionalNTPSources:
       - 192.168.40.117
     # Optionally; This can be used to override the KlusterletAddonConfig that is created for this cluster:
-    #crTemplates:
-    #  KlusterletAddonConfig: "KlusterletAddonConfigOverride.yaml"
+    crTemplates:
+      KlusterletAddonConfig: "KlusterletAddonConfigOverridesite2.yaml"
     nodes:
       - hostName: "ztpdemosno2.intel.demolab.com"
         role: "master"

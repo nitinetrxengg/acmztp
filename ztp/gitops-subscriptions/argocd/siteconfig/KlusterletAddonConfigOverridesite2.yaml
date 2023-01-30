@@ -3,11 +3,11 @@ kind: KlusterletAddonConfig
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "2"
-  name: "ztpdemosno1"
-  namespace: "ztpdemosno1"
+  name: "ztpdemosno2"
+  namespace: "ztpdemosno2"
 spec:
-  clusterName: "snosite1"
-  clusterNamespace: "snosite1"
+  clusterName: "ztpdemosno2"
+  clusterNamespace: "ztpdemosno2"
   clusterLabels:
     cloud: auto-detect
     vendor: auto-detect

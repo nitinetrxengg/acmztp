@@ -6,8 +6,8 @@ metadata:
   name: "ztpdemosno1"
   namespace: "ztpdemosno1"
 spec:
-  clusterName: "snosite1"
-  clusterNamespace: "snosite1"
+  clusterName: "ztpdemosno1"
+  clusterNamespace: "ztpdemosno1"
   clusterLabels:
     cloud: auto-detect
     vendor: auto-detect
