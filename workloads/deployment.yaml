@@ -14,6 +14,10 @@ spec:
       labels:
         app: ztphttpd
     spec:
+      volumes:
+        - name: ztppvc
+          persistentVolumeClaim:
+            claimName: ztppvc
       containers:
         - name: ztphttpd
           image: quay.io/nitin_etrxengg/ztp/ztphttpd:latest
@@ -22,6 +26,9 @@ spec:
               protocol: TCP
             - containerPort: 8443
               protocol: TCP
+          volumeMounts:
+            - name: ztppvc
+              mountPath: /data
           imagePullPolicy: Always
       restartPolicy: Always
   strategy:
