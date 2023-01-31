@@ -5,7 +5,6 @@ metadata:
   labels:
     app: ztphttpd
 spec:
-  host: ztphttpd-virtualization.apps.ocphub.intel.demolab.com
   to:
     kind: Service
     name: ztphttpd
