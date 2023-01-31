@@ -33,18 +33,18 @@ spec:
     kind: DataVolume
     metadata:
       name: rhel9-ztp-vm
-    spec:
-      source:
-        registry:
-          url: 'docker://registry.redhat.io/rhel9/rhel-guest-image'
-      storage:
-        accessModes:
-        - ReadWriteOnce
-        resources:
-          requests:
-            storage: "32212254720"
-        storageClassName: odf-lvm-vg1
-        volumeMode: Block
+    sourceRef:
+          kind: DataSource
+          name: rhel9
+          namespace: openshift-virtualization-os-images
+        storage:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: '32212254720'
+          storageClassName: odf-lvm-vg1
+          volumeMode: Block  
   running: true
   template:
     metadata:
