@@ -29,11 +29,12 @@ metadata:
   namespace: default
 spec:
   dataVolumeTemplates:
-  - apiVersion: cdi.kubevirt.io/v1beta1
-    kind: DataVolume
-    metadata:
-      name: rhel9-ztp-vm
-    sourceRef:
+    - apiVersion: cdi.kubevirt.io/v1beta1
+      kind: DataVolume
+      metadata:
+        name: rhel9-ztp-vm
+      spec:
+        sourceRef:
           kind: DataSource
           name: rhel9
           namespace: openshift-virtualization-os-images
