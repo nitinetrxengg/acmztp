@@ -1,0 +1,14 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: ztphttpd
+  labels:
+    app: ztphttpd
+spec:
+  to:
+    kind: Service
+    name: ztphttpd
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
