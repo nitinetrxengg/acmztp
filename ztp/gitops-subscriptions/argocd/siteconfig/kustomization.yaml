@@ -3,8 +3,6 @@ kind: Kustomization
 
 generators:
 - site-1-sno.yaml
-- site-2-sno.yaml
 
 resources:
 - snosite1_secret.yaml
-- snosite2_secret.yaml
